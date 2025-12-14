@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67388fffa3ebd946f28def9dc7af9158",
+    "content-hash": "0d2bf31dce892999659f60887a544c3d",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1803,6 +1803,71 @@
             "time": "2024-09-09T11:45:10+00:00"
         },
         {
+            "name": "symfony/process",
+            "version": "v7.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "7ca8dc2d0dcf4882658313aba8be5d9fd01026c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/7ca8dc2d0dcf4882658313aba8be5d9fd01026c8",
+                "reference": "7ca8dc2d0dcf4882658313aba8be5d9fd01026c8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v7.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-10-16T11:21:06+00:00"
+        },
+        {
             "name": "symfony/service-contracts",
             "version": "v3.6.1",
             "source": {
@@ -2212,29 +2277,29 @@
         },
         {
             "name": "tempest/cache",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-cache.git",
-                "reference": "355a5b4c5ebcd81fa5bbe99f20f9f618eba94f7a"
+                "reference": "78fa8e9c6f64b789809de53aaad31d2eba0e1909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-cache/zipball/355a5b4c5ebcd81fa5bbe99f20f9f618eba94f7a",
-                "reference": "355a5b4c5ebcd81fa5bbe99f20f9f618eba94f7a",
+                "url": "https://api.github.com/repos/tempestphp/tempest-cache/zipball/78fa8e9c6f64b789809de53aaad31d2eba0e1909",
+                "reference": "78fa8e9c6f64b789809de53aaad31d2eba0e1909",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
                 "psr/cache": "^3.0",
                 "symfony/cache": "^7.3",
-                "tempest/clock": "2.13.0",
-                "tempest/container": "2.13.0",
-                "tempest/core": "2.13.0",
-                "tempest/kv-store": "2.13.0"
+                "tempest/clock": "2.14.0",
+                "tempest/container": "2.14.0",
+                "tempest/core": "2.14.0",
+                "tempest/kv-store": "2.14.0"
             },
             "require-dev": {
-                "tempest/clock": "2.13.0"
+                "tempest/clock": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2249,28 +2314,28 @@
             "description": "The PHP framework that gets out of your way.",
             "support": {
                 "issues": "https://github.com/tempestphp/tempest-cache/issues",
-                "source": "https://github.com/tempestphp/tempest-cache/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-cache/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:57+00:00"
+            "time": "2025-12-12T08:11:24+00:00"
         },
         {
             "name": "tempest/clock",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-clock.git",
-                "reference": "3e040c22132f12c444de95c23afaee1af36a0fe5"
+                "reference": "c6c080eaf2737396d2de7d7eb87fb6743b8bf4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-clock/zipball/3e040c22132f12c444de95c23afaee1af36a0fe5",
-                "reference": "3e040c22132f12c444de95c23afaee1af36a0fe5",
+                "url": "https://api.github.com/repos/tempestphp/tempest-clock/zipball/c6c080eaf2737396d2de7d7eb87fb6743b8bf4f7",
+                "reference": "c6c080eaf2737396d2de7d7eb87fb6743b8bf4f7",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
                 "psr/clock": "^1.0.0",
-                "tempest/datetime": "2.13.0"
+                "tempest/datetime": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2287,37 +2352,37 @@
             ],
             "description": "A clock component that handle few simple clock operations.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-clock/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-clock/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:18+00:00"
+            "time": "2025-12-12T08:11:10+00:00"
         },
         {
             "name": "tempest/console",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-console.git",
-                "reference": "36dce72d0bf8c145a9b0398baaa215a12d51f359"
+                "reference": "c1d0ee730503e08e3805f2ccbe8e5b3363ecd1f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-console/zipball/36dce72d0bf8c145a9b0398baaa215a12d51f359",
-                "reference": "36dce72d0bf8c145a9b0398baaa215a12d51f359",
+                "url": "https://api.github.com/repos/tempestphp/tempest-console/zipball/c1d0ee730503e08e3805f2ccbe8e5b3363ecd1f3",
+                "reference": "c1d0ee730503e08e3805f2ccbe8e5b3363ecd1f3",
                 "shasum": ""
             },
             "require": {
                 "ext-readline": "*",
                 "php": "^8.4",
-                "tempest/cache": "2.13.0",
-                "tempest/container": "2.13.0",
-                "tempest/core": "2.13.0",
-                "tempest/debug": "2.13.0",
-                "tempest/generation": "2.13.0",
+                "tempest/cache": "2.14.0",
+                "tempest/container": "2.14.0",
+                "tempest/core": "2.14.0",
+                "tempest/debug": "2.14.0",
+                "tempest/generation": "2.14.0",
                 "tempest/highlight": "^2.11.4",
-                "tempest/log": "2.13.0",
-                "tempest/reflection": "2.13.0",
-                "tempest/support": "2.13.0",
-                "tempest/validation": "2.13.0"
+                "tempest/log": "2.14.0",
+                "tempest/reflection": "2.14.0",
+                "tempest/support": "2.14.0",
+                "tempest/validation": "2.14.0"
             },
             "suggest": {
                 "ext-pcntl": "Required to use some interactive console components.",
@@ -2338,27 +2403,27 @@
             ],
             "description": "The console component provides a way to build commands within the framework or standalone command-line applications.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-console/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-console/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:20+00:00"
+            "time": "2025-12-12T08:11:32+00:00"
         },
         {
             "name": "tempest/container",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-container.git",
-                "reference": "874a134a4e77913e3b0b3228c71a05d8cca968bc"
+                "reference": "8b75fab0bc22c7a8396e82b04a40fd50807b026f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-container/zipball/874a134a4e77913e3b0b3228c71a05d8cca968bc",
-                "reference": "874a134a4e77913e3b0b3228c71a05d8cca968bc",
+                "url": "https://api.github.com/repos/tempestphp/tempest-container/zipball/8b75fab0bc22c7a8396e82b04a40fd50807b026f",
+                "reference": "8b75fab0bc22c7a8396e82b04a40fd50807b026f",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
-                "tempest/reflection": "2.13.0"
+                "tempest/reflection": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2375,32 +2440,32 @@
             ],
             "description": "The container component is where the initialization of services and their dependencies are managed.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-container/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-container/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:23+00:00"
+            "time": "2025-12-12T08:10:39+00:00"
         },
         {
             "name": "tempest/core",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-core.git",
-                "reference": "3eb4328ec6402baa09408f417a8fcfba7802a399"
+                "reference": "13a0cf37e81b4ff304dfc25357dd1c1379f8989c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-core/zipball/3eb4328ec6402baa09408f417a8fcfba7802a399",
-                "reference": "3eb4328ec6402baa09408f417a8fcfba7802a399",
+                "url": "https://api.github.com/repos/tempestphp/tempest-core/zipball/13a0cf37e81b4ff304dfc25357dd1c1379f8989c",
+                "reference": "13a0cf37e81b4ff304dfc25357dd1c1379f8989c",
                 "shasum": ""
             },
             "require": {
                 "filp/whoops": "^2.15",
                 "php": "^8.4",
                 "symfony/cache": "^7.3",
-                "tempest/container": "2.13.0",
-                "tempest/discovery": "2.13.0",
-                "tempest/reflection": "2.13.0",
-                "tempest/support": "2.13.0",
+                "tempest/container": "2.14.0",
+                "tempest/discovery": "2.14.0",
+                "tempest/reflection": "2.14.0",
+                "tempest/support": "2.14.0",
                 "vlucas/phpdotenv": "^5.6.1"
             },
             "type": "library",
@@ -2418,28 +2483,28 @@
             ],
             "description": "The core component of the Tempest framework.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-core/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-core/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:18+00:00"
+            "time": "2025-12-12T08:11:28+00:00"
         },
         {
             "name": "tempest/datetime",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-datetime.git",
-                "reference": "3d3e1239268c782e7ca9daf4365e78cc73c65d00"
+                "reference": "8324ee1ef5388eba9844cf601a53399378d5dedd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-datetime/zipball/3d3e1239268c782e7ca9daf4365e78cc73c65d00",
-                "reference": "3d3e1239268c782e7ca9daf4365e78cc73c65d00",
+                "url": "https://api.github.com/repos/tempestphp/tempest-datetime/zipball/8324ee1ef5388eba9844cf601a53399378d5dedd",
+                "reference": "8324ee1ef5388eba9844cf601a53399378d5dedd",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
-                "tempest/intl": "2.13.0",
-                "tempest/support": "2.13.0"
+                "tempest/intl": "2.14.0",
+                "tempest/support": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2458,13 +2523,13 @@
             "description": "Alternative, more convenient DateTime implementation",
             "support": {
                 "issues": "https://github.com/tempestphp/tempest-datetime/issues",
-                "source": "https://github.com/tempestphp/tempest-datetime/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-datetime/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:31+00:00"
+            "time": "2025-12-12T08:10:31+00:00"
         },
         {
             "name": "tempest/debug",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-debug.git",
@@ -2497,28 +2562,28 @@
             "description": "Debug functions for Tempest",
             "support": {
                 "issues": "https://github.com/tempestphp/tempest-debug/issues",
-                "source": "https://github.com/tempestphp/tempest-debug/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-debug/tree/v2.14.0"
             },
             "time": "2025-12-03T22:02:19+00:00"
         },
         {
             "name": "tempest/discovery",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-discovery.git",
-                "reference": "282eb3f50f8dcccb08eaef5b91432e9404eccf86"
+                "reference": "d3c247a0aefefdeca3f8a42855997776eb757371"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-discovery/zipball/282eb3f50f8dcccb08eaef5b91432e9404eccf86",
-                "reference": "282eb3f50f8dcccb08eaef5b91432e9404eccf86",
+                "url": "https://api.github.com/repos/tempestphp/tempest-discovery/zipball/d3c247a0aefefdeca3f8a42855997776eb757371",
+                "reference": "d3c247a0aefefdeca3f8a42855997776eb757371",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
-                "tempest/reflection": "2.13.0",
-                "tempest/support": "2.13.0"
+                "tempest/reflection": "2.14.0",
+                "tempest/support": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2532,29 +2597,29 @@
             ],
             "description": "Discover PHP classes and files",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-discovery/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-discovery/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:55:05+00:00"
+            "time": "2025-12-12T08:11:26+00:00"
         },
         {
             "name": "tempest/event-bus",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-event-bus.git",
-                "reference": "50fdd31f3f8b5b5901a1507363f2bac9f4ea72de"
+                "reference": "76839e8a64405141b557fd61ac759d0624e0b4b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-event-bus/zipball/50fdd31f3f8b5b5901a1507363f2bac9f4ea72de",
-                "reference": "50fdd31f3f8b5b5901a1507363f2bac9f4ea72de",
+                "url": "https://api.github.com/repos/tempestphp/tempest-event-bus/zipball/76839e8a64405141b557fd61ac759d0624e0b4b3",
+                "reference": "76839e8a64405141b557fd61ac759d0624e0b4b3",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
-                "tempest/container": "2.13.0",
-                "tempest/core": "2.13.0",
-                "tempest/reflection": "2.13.0"
+                "tempest/container": "2.14.0",
+                "tempest/core": "2.14.0",
+                "tempest/reflection": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2571,29 +2636,29 @@
             ],
             "description": "A lightweight event bus component designed to facilitate event-driven architecture and asynchronous message handling.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-event-bus/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-event-bus/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:19+00:00"
+            "time": "2025-12-12T08:10:43+00:00"
         },
         {
             "name": "tempest/generation",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-generation.git",
-                "reference": "024370d67f62965d1e720410196b6e93de5857d0"
+                "reference": "e28c9c284ef19e9ebe6f230b958ee56a75250e44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-generation/zipball/024370d67f62965d1e720410196b6e93de5857d0",
-                "reference": "024370d67f62965d1e720410196b6e93de5857d0",
+                "url": "https://api.github.com/repos/tempestphp/tempest-generation/zipball/e28c9c284ef19e9ebe6f230b958ee56a75250e44",
+                "reference": "e28c9c284ef19e9ebe6f230b958ee56a75250e44",
                 "shasum": ""
             },
             "require": {
                 "nette/php-generator": "^4.1.6",
                 "nikic/php-parser": "^5.3",
                 "php": "^8.4",
-                "tempest/support": "2.13.0"
+                "tempest/support": "2.14.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^12.2.3",
@@ -2611,9 +2676,9 @@
             ],
             "description": "A component for generating PHP.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-generation/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-generation/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:18+00:00"
+            "time": "2025-12-12T08:10:39+00:00"
         },
         {
             "name": "tempest/highlight",
@@ -2675,25 +2740,25 @@
         },
         {
             "name": "tempest/intl",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-intl.git",
-                "reference": "37a39100a926f8b9214d3c8f994efb067b43245f"
+                "reference": "0a2cc2516c7886d0cffd32f61488c0fc8ce28181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-intl/zipball/37a39100a926f8b9214d3c8f994efb067b43245f",
-                "reference": "37a39100a926f8b9214d3c8f994efb067b43245f",
+                "url": "https://api.github.com/repos/tempestphp/tempest-intl/zipball/0a2cc2516c7886d0cffd32f61488c0fc8ce28181",
+                "reference": "0a2cc2516c7886d0cffd32f61488c0fc8ce28181",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^2.0",
                 "php": "^8.4",
                 "symfony/yaml": "^7.3",
-                "tempest/container": "2.13.0",
-                "tempest/core": "2.13.0",
-                "tempest/support": "2.13.0"
+                "tempest/container": "2.14.0",
+                "tempest/core": "2.14.0",
+                "tempest/support": "2.14.0"
             },
             "suggest": {
                 "tempest/datetime": "In order to use the `datetime` function",
@@ -2715,29 +2780,29 @@
             ],
             "description": "A component for working with internationalization.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-intl/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-intl/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:16+00:00"
+            "time": "2025-12-12T08:11:37+00:00"
         },
         {
             "name": "tempest/kv-store",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-kv-store.git",
-                "reference": "35253cbd37418093cacb2104730165da9276fe3d"
+                "reference": "e89955a5997a8112d2b23fcfec38694db442a488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-kv-store/zipball/35253cbd37418093cacb2104730165da9276fe3d",
-                "reference": "35253cbd37418093cacb2104730165da9276fe3d",
+                "url": "https://api.github.com/repos/tempestphp/tempest-kv-store/zipball/e89955a5997a8112d2b23fcfec38694db442a488",
+                "reference": "e89955a5997a8112d2b23fcfec38694db442a488",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
-                "tempest/datetime": "2.13.0",
-                "tempest/event-bus": "2.13.0",
-                "tempest/support": "2.13.0"
+                "tempest/datetime": "2.14.0",
+                "tempest/event-bus": "2.14.0",
+                "tempest/support": "2.14.0"
             },
             "require-dev": {
                 "predis/predis": "^3.0.0"
@@ -2754,29 +2819,29 @@
             ],
             "description": "A component for working with key-value stores.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-kv-store/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-kv-store/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:16+00:00"
+            "time": "2025-12-12T08:11:04+00:00"
         },
         {
             "name": "tempest/log",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-log.git",
-                "reference": "4bec8d5c674bbb20e3fa56701f06a563e272b5ef"
+                "reference": "1eb75f9873bcd7bb03e9c96f54a75e0b7a08f868"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-log/zipball/4bec8d5c674bbb20e3fa56701f06a563e272b5ef",
-                "reference": "4bec8d5c674bbb20e3fa56701f06a563e272b5ef",
+                "url": "https://api.github.com/repos/tempestphp/tempest-log/zipball/1eb75f9873bcd7bb03e9c96f54a75e0b7a08f868",
+                "reference": "1eb75f9873bcd7bb03e9c96f54a75e0b7a08f868",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "^3.7.0",
                 "php": "^8.4",
                 "psr/log": "^3.0.0",
-                "tempest/container": "2.13.0"
+                "tempest/container": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2790,22 +2855,60 @@
             ],
             "description": "A component for logging handling.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-log/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-log/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:15+00:00"
+            "time": "2025-12-12T08:10:56+00:00"
         },
         {
-            "name": "tempest/reflection",
-            "version": "v2.13.0",
+            "name": "tempest/process",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/tempestphp/tempest-reflection.git",
-                "reference": "606a4d0e6ba5422e9c1b1f64939a23e44eb39fca"
+                "url": "https://github.com/tempestphp/tempest-process.git",
+                "reference": "17f9c6094ed29246848bbacb058db2217cb15026"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-reflection/zipball/606a4d0e6ba5422e9c1b1f64939a23e44eb39fca",
-                "reference": "606a4d0e6ba5422e9c1b1f64939a23e44eb39fca",
+                "url": "https://api.github.com/repos/tempestphp/tempest-process/zipball/17f9c6094ed29246848bbacb058db2217cb15026",
+                "reference": "17f9c6094ed29246848bbacb058db2217cb15026",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.4",
+                "symfony/process": "^7.3",
+                "tempest/container": "2.14.0",
+                "tempest/datetime": "2.14.0",
+                "tempest/support": "2.14.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tempest\\Process\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A component for working with processes.",
+            "support": {
+                "issues": "https://github.com/tempestphp/tempest-process/issues",
+                "source": "https://github.com/tempestphp/tempest-process/tree/v2.14.0"
+            },
+            "time": "2025-12-12T08:11:03+00:00"
+        },
+        {
+            "name": "tempest/reflection",
+            "version": "v2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempestphp/tempest-reflection.git",
+                "reference": "426c56eb4282397f361a06817cb90a8e1036a072"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempestphp/tempest-reflection/zipball/426c56eb4282397f361a06817cb90a8e1036a072",
+                "reference": "426c56eb4282397f361a06817cb90a8e1036a072",
                 "shasum": ""
             },
             "require": {
@@ -2827,28 +2930,28 @@
             "description": "A component for reflection.",
             "support": {
                 "issues": "https://github.com/tempestphp/tempest-reflection/issues",
-                "source": "https://github.com/tempestphp/tempest-reflection/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-reflection/tree/v2.14.0"
             },
-            "time": "2025-10-17T06:17:21+00:00"
+            "time": "2025-12-12T07:23:14+00:00"
         },
         {
             "name": "tempest/support",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-support.git",
-                "reference": "a46fffcbc7c241e3d8881832956a8f621ef7e2bc"
+                "reference": "9c92e8ec150678cfe7a87617fedb4ff65b2a4536"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-support/zipball/a46fffcbc7c241e3d8881832956a8f621ef7e2bc",
-                "reference": "a46fffcbc7c241e3d8881832956a8f621ef7e2bc",
+                "url": "https://api.github.com/repos/tempestphp/tempest-support/zipball/9c92e8ec150678cfe7a87617fedb4ff65b2a4536",
+                "reference": "9c92e8ec150678cfe7a87617fedb4ff65b2a4536",
                 "shasum": ""
             },
             "require": {
                 "php": "^8.4",
                 "symfony/uid": "^7.1",
-                "tempest/container": "2.13.0",
+                "tempest/container": "2.14.0",
                 "voku/portable-ascii": "^2.0.3"
             },
             "type": "library",
@@ -2880,32 +2983,32 @@
             ],
             "description": "A component for general support helper functions.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-support/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-support/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:19+00:00"
+            "time": "2025-12-12T08:11:31+00:00"
         },
         {
             "name": "tempest/validation",
-            "version": "v2.13.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tempestphp/tempest-validation.git",
-                "reference": "ee54189d25f31f6f59bb2c26df16920d585d2e7c"
+                "reference": "54a40cac6c8e14ce575229950492861f71a6beec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tempestphp/tempest-validation/zipball/ee54189d25f31f6f59bb2c26df16920d585d2e7c",
-                "reference": "ee54189d25f31f6f59bb2c26df16920d585d2e7c",
+                "url": "https://api.github.com/repos/tempestphp/tempest-validation/zipball/54a40cac6c8e14ce575229950492861f71a6beec",
+                "reference": "54a40cac6c8e14ce575229950492861f71a6beec",
                 "shasum": ""
             },
             "require": {
                 "egulias/email-validator": "^4.0.2",
                 "giggsey/libphonenumber-for-php-lite": "^9.0",
                 "php": "^8.4",
-                "tempest/datetime": "2.13.0",
-                "tempest/intl": "2.13.0",
-                "tempest/reflection": "2.13.0",
-                "tempest/support": "2.13.0"
+                "tempest/datetime": "2.14.0",
+                "tempest/intl": "2.14.0",
+                "tempest/reflection": "2.14.0",
+                "tempest/support": "2.14.0"
             },
             "type": "library",
             "autoload": {
@@ -2919,9 +3022,9 @@
             ],
             "description": "A component for data validation handling.",
             "support": {
-                "source": "https://github.com/tempestphp/tempest-validation/tree/v2.13.0"
+                "source": "https://github.com/tempestphp/tempest-validation/tree/v2.14.0"
             },
-            "time": "2025-12-04T13:54:40+00:00"
+            "time": "2025-12-12T08:11:30+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3084,12 +3187,12 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {},
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.4"
+        "php": "^8.4"
     },
     "platform-dev": {},
     "plugin-api-version": "2.9.0"
