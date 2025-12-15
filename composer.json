@@ -36,5 +36,8 @@
             "php-http/discovery": true,
             "carthage-software/mago": true
         }
+    },
+    "require-dev": {
+        "swoole/ide-helper": "@dev"
     }
 }
