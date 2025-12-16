@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24c5db4f162b571afe9d87ca9d7cb843",
+    "content-hash": "c54469001ac9dc8709b18e0110f8f8c3",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2357,6 +2357,45 @@
             "time": "2025-12-12T08:11:10+00:00"
         },
         {
+            "name": "tempest/command-bus",
+            "version": "v2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempestphp/tempest-command-bus.git",
+                "reference": "c2a6d91b2aa8de3bb9d32a17770887105a53d4cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempestphp/tempest-command-bus/zipball/c2a6d91b2aa8de3bb9d32a17770887105a53d4cf",
+                "reference": "c2a6d91b2aa8de3bb9d32a17770887105a53d4cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.4",
+                "tempest/console": "2.14.0",
+                "tempest/container": "2.14.0",
+                "tempest/core": "2.14.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Tempest\\CommandBus\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A command bus component designed to dispatch commands to their respective handlers.",
+            "support": {
+                "source": "https://github.com/tempestphp/tempest-command-bus/tree/v2.14.0"
+            },
+            "time": "2025-12-12T08:11:09+00:00"
+        },
+        {
             "name": "tempest/console",
             "version": "v2.14.0",
             "source": {
@@ -3230,5 +3269,5 @@
         "php": "^8.4"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }
