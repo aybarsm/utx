@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c54469001ac9dc8709b18e0110f8f8c3",
+    "content-hash": "be69b22a1482028faa4ba61669cac6d7",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2897,6 +2897,44 @@
                 "source": "https://github.com/tempestphp/tempest-log/tree/v2.14.0"
             },
             "time": "2025-12-12T08:10:56+00:00"
+        },
+        {
+            "name": "tempest/mapper",
+            "version": "v2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempestphp/tempest-mapper.git",
+                "reference": "bdc4e71148ad9df9c480f163baacebee20e43661"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempestphp/tempest-mapper/zipball/bdc4e71148ad9df9c480f163baacebee20e43661",
+                "reference": "bdc4e71148ad9df9c480f163baacebee20e43661",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.4",
+                "tempest/core": "2.14.0",
+                "tempest/validation": "2.14.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Tempest\\Mapper\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A component for data mapping.",
+            "support": {
+                "source": "https://github.com/tempestphp/tempest-mapper/tree/v2.14.0"
+            },
+            "time": "2025-12-12T08:11:08+00:00"
         },
         {
             "name": "tempest/process",
