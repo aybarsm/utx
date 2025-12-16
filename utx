@@ -1,14 +1,13 @@
 #!/usr/bin/env php
 <?php
 
-use App\Framework\Console\ConsoleApplication;
+use Tempest\Console\ConsoleApplication;
 
 require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
 
 ConsoleApplication::boot(
-        name: 'Helper',
+        name: 'utx',
         root: \Phar::running(false) ? \Phar::running(false) : __DIR__,
-        internalStorage: \Phar::running(false) ? sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'helper-app' : null,
 )->run();
 
 exit;

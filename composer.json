@@ -1,11 +1,11 @@
 {
-    "name": "aybarsm/helper",
+    "name": "aybarsm/utx",
     "type": "project",
-    "description": "A lightweight PHP CLI tool for consolidated helpers.",
-    "keywords": ["php", "cli", "tempest"],
+    "description": "A lightweight PHP CLI of Swiss army knife.",
+    "keywords": ["utx", "php", "cli", "tempest"],
     "support": {
-        "issues": "https://github.com/aybarsm/helper/issues",
-        "source": "https://github.com/aybarsm/helper"
+        "issues": "https://github.com/aybarsm/utx/issues",
+        "source": "https://github.com/aybarsm/utx"
     },
     "authors": [
         {
