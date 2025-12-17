@@ -20,7 +20,9 @@
         "tempest/process": "^2.13",
         "tempest/event-bus": "^2.14",
         "tempest/command-bus": "^2.14",
-        "tempest/mapper": "^2.14"
+        "tempest/mapper": "^2.14",
+        "symfony/finder": "^8.0",
+        "tempest/support": "^2.14"
     },
     "autoload": {
         "psr-4": {

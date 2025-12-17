@@ -5,6 +5,8 @@ use Tempest\Console\ConsoleApplication;
 
 require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
 
+sentinel();
+
 ConsoleApplication::boot(
         name: 'utx',
         root: \Phar::running(false) ? \Phar::running(false) : __DIR__,
