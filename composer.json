@@ -16,13 +16,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.4",
-        "tempest/console": "^2.13",
-        "tempest/process": "^2.13",
+        "tempest/console": "^2.14",
+        "tempest/process": "^2.14",
         "tempest/event-bus": "^2.14",
         "tempest/command-bus": "^2.14",
         "tempest/mapper": "^2.14",
         "symfony/finder": "^8.0",
-        "tempest/support": "^2.14"
+        "tempest/support": "^2.14",
+        "tempest/cryptography": "^2.14",
+        "tempest/database": "^2.14"
     },
     "autoload": {
         "psr-4": {

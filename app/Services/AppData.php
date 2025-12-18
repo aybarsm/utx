@@ -3,11 +3,11 @@
 namespace App\Services;
 
 use App\Services\Fluent;
-use function Tempest\root_path;
+use Tempest\Container\Singleton;
 
-class AppData extends Fluent
+#[Singleton(tag: 'app-data')]
+final class AppData extends Fluent
 {
-
 
     public function __construct(array $value = [], string $file = '')
     {
@@ -23,7 +23,7 @@ class AppData extends Fluent
 
     protected static function resolveArguments(): array
     {
-        $file = resolve_path(root_path(), 'app.json');
+        $file = path(\Tempest\root_path(), 'app.json');
         if (\Tempest\Support\Filesystem\exists($file)) {
             $value = \Tempest\Support\Filesystem\read_json($file);
         }else {

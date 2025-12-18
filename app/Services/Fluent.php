@@ -3,25 +3,25 @@
 declare(strict_types=1);
 
 namespace App\Services;
-use App\Framework\Support\Arr\IsIterable;
+use Tempest\Support\Arr\IsIterable;
 use ArrayIterator;
 use IteratorAggregate;
 use JsonSerializable;
 use Tempest\Support\Arr;
 use Tempest\Support\Arr\ArrayInterface;
 use Traversable;
-use function LaravelIdea\throw_if;
 
 class Fluent implements ArrayInterface, JsonSerializable
 {
+    private bool $saved = false;
     use IsIterable;
     public function __construct(
         public array $value = [],
         protected string $file = '',
     )
     {
-        if (filled($this->file)) {
-            $this->file = resolve_path($this->file);
+        if ($this->savable()) {
+            $this->file = path($this->file);
         }
     }
 
@@ -143,22 +143,43 @@ class Fluent implements ArrayInterface, JsonSerializable
     {
         $this->offsetSet($key, $value);
     }
+    public function __destruct()
+    {
+        if ($this->savable()){
+            $this->save();
+//            register_shutdown_function()
+        }
+    }
 
+    public function savable(): bool
+    {
+        return filled($this->file);
+    }
 
+    public function saved(): bool
+    {
+        return $this->saved;
+    }
     public function save(bool $pretty = true): static
     {
         throw_if(
-            blank($this->file),
+            ! $this->savable(),
             \InvalidArgumentException::class,
             'File path not set to save the Fluent data.'
 
         );
+
+        if ($this->saved()){
+            return $this;
+        }
 
         \Tempest\Support\Filesystem\write_json(
             $this->file,
             $this->jsonSerialize(),
             $pretty
         );
+
+        $this->saved = true;
 
         return $this;
     }

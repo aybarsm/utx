@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace App\Framework\Support\Arr;
 
 use App\Traits\IsPipable;
-use Tempest\Support\Arr\ManipulatesArray;
 use Tempest\Support\Arr\ArrayInterface;
+use Tempest\Support\Arr\IsIterable;
+use Tempest\Support\Conditions\HasConditions;
+
 final class MutableArray implements ArrayInterface
 {
     use IsIterable;
     use ManipulatesArray;
+    use HasConditions;
     use IsPipable;
 
     public function toImmutableArray(): ImmutableArray

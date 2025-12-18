@@ -22,11 +22,12 @@ final readonly class ConsoleApplication implements Application
 
     /** @param \Tempest\Discovery\DiscoveryLocation[] $discoveryLocations */
     public static function boot(
-        string $name = 'Tempest',
-        ?string $root = null,
         array $discoveryLocations = [],
-        ?string $internalStorage = null
     ): self {
+        $name = 'utx';
+        $root = path_rwd();
+        $internalStorage = implode(DIRECTORY_SEPARATOR, [$root, '.utx']);
+
         $container = Tempest::boot(
             root: $root,
             discoveryLocations: $discoveryLocations,
@@ -35,7 +36,6 @@ final readonly class ConsoleApplication implements Application
 
         $application = $container->get(ConsoleApplication::class);
 
-        // Application-specific config
         $consoleConfig = $container->get(ConsoleConfig::class);
         $consoleConfig->name = $name;
 

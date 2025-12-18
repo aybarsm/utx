@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1febaf4b46610fcae66544ceebdbc59",
+    "content-hash": "824e693773be2e442c26b0cb108b76ae",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2593,6 +2593,85 @@
                 "source": "https://github.com/tempestphp/tempest-core/tree/v2.14.0"
             },
             "time": "2025-12-12T08:11:28+00:00"
+        },
+        {
+            "name": "tempest/cryptography",
+            "version": "v2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempestphp/tempest-cryptography.git",
+                "reference": "f93890472fc0459a98259a2c2f314fcccb479def"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempestphp/tempest-cryptography/zipball/f93890472fc0459a98259a2c2f314fcccb479def",
+                "reference": "f93890472fc0459a98259a2c2f314fcccb479def",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.4",
+                "tempest/clock": "2.14.0",
+                "tempest/container": "2.14.0",
+                "tempest/support": "2.14.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tempest\\Cryptography\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A component for working with passwords, hashing, and cryptography.",
+            "support": {
+                "issues": "https://github.com/tempestphp/tempest-cryptography/issues",
+                "source": "https://github.com/tempestphp/tempest-cryptography/tree/v2.14.0"
+            },
+            "time": "2025-12-12T08:11:20+00:00"
+        },
+        {
+            "name": "tempest/database",
+            "version": "v2.14.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempestphp/tempest-database.git",
+                "reference": "69ece84638940f3015ee0a42da8ad44e521c601c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempestphp/tempest-database/zipball/69ece84638940f3015ee0a42da8ad44e521c601c",
+                "reference": "69ece84638940f3015ee0a42da8ad44e521c601c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pdo": "*",
+                "php": "^8.4",
+                "tempest/container": "2.14.0",
+                "tempest/event-bus": "2.14.0",
+                "tempest/intl": "2.14.0",
+                "tempest/mapper": "2.14.0",
+                "tempest/support": "2.14.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Tempest\\Database\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The component responsible for database interaction in the Tempest framework.",
+            "support": {
+                "source": "https://github.com/tempestphp/tempest-database/tree/v2.14.0"
+            },
+            "time": "2025-12-12T08:11:20+00:00"
         },
         {
             "name": "tempest/datetime",

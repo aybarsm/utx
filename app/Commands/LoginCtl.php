@@ -1,16 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Commands;
 
+use Tempest\Cache\Cache;
 use Tempest\Console\Console;
 use Tempest\Console\ConsoleCommand;
 use Tempest\Process\ProcessExecutor;
-use Tempest\Console\Schedule;
-use Tempest\Console\Scheduler\Every;
-use Tempest\Console\Scheduler\Interval;
-use Tempest\Cache\Cache;
 
-final class Loginctl
+final class LoginCtl
 {
     public function __construct(
         private Console $console,
