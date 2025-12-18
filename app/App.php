@@ -24,6 +24,9 @@ final class App
     #[ConsoleCommand(name: 'app:update', description: 'Update the app')]
     public function update(): void
     {
-
+        if (is_phar()){
+            $this->console->error('Application update currently not possible with PHAR.');
+            return;
+        }
     }
 }

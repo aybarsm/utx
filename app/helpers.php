@@ -20,15 +20,32 @@ if (!function_exists('is_sentinel')) {
     }
 }
 
-if (!function_exists('join_paths')) {
-    function join_paths(string $baseDir, ...$paths): string
+if (!function_exists('resolve_path')) {
+    function resolve_path(...$parts): string
     {
-        return implode(DIRECTORY_SEPARATOR,
-            array_map(
-                static fn (string $path): string => trim(trim(trim($path), DIRECTORY_SEPARATOR)),
-                array_merge([$baseDir], $paths)
-            )
-        );
+        $isWindows = null;
+        $ret = arr($parts)
+            ->pipe(function (\App\Framework\Support\Arr\ImmutableArray $arr) use(&$isWindows) {
+                if ($isWindows = (strtolower(PHP_OS_FAMILY) == 'windows')){
+                    return $arr;
+                }
+
+                if (str_starts_with(trim($arr->first()), '.')){
+                    return $arr->put(0, getcwd());
+                }elseif (str_starts_with(trim($arr->first()), '~') && ($_SERVER['HOME'] ?? null)){
+                    return $arr->put($_SERVER['HOME'], getcwd());
+                }
+
+                return $arr;
+            })
+            ->map(static fn ($part) => trim(trim(trim($part), DIRECTORY_SEPARATOR)))
+            ->map(static fn ($part) => preg_split('#' . DIRECTORY_SEPARATOR . '#', $part, -1, PREG_SPLIT_NO_EMPTY))
+            ->flatten()
+            ->implode(DIRECTORY_SEPARATOR);
+
+        return str($ret)
+            ->when(! $isWindows, fn ($path) => $path->start(DIRECTORY_SEPARATOR))
+            ->toString();
     }
 }
 
@@ -78,9 +95,9 @@ if (! function_exists('str')) {
 }
 
 if (! function_exists('arr')) {
-    function arr(mixed $value): \Tempest\Support\Arr\ImmutableArray
+    function arr(mixed $value): \App\Framework\Support\Arr\ImmutableArray
     {
-        return \Tempest\Support\arr($value);
+        return \App\Framework\Support\Arr\ImmutableArray::createFrom($value);
     }
 }
 
@@ -99,5 +116,46 @@ if (! function_exists('data_key')) {
             ->when(filled($prefix), static fn ($str) => $str->start("{$prefix}."))
             ->when(filled($suffix), static fn ($str) => $str->finish(".{$suffix}"))
             ->toString();
+    }
+}
+
+if (! function_exists('is_phar')) {
+    function is_phar(): bool
+    {
+        return \Phar::running(false) !== '';
+    }
+}
+
+if (! function_exists('is_phar')) {
+    function is_phar(): bool
+    {
+        return \Phar::running(false) !== '';
+    }
+}
+
+if (! function_exists('temp_path')) {
+    function temp_path(...$parts): string
+    {
+        return resolve_path(sys_get_temp_dir(), ...$parts);
+    }
+}
+
+if (! function_exists('value')) {
+    function value($value, ...$args): mixed
+    {
+        return $value instanceof Closure ? $value(...$args) : $value;
+    }
+}
+
+if (! function_exists('when')) {
+    function when($condition, $value, $default = null): mixed
+    {
+        $condition = $condition instanceof Closure ? $condition() : $condition;
+
+        if ($condition) {
+            return value($value, $condition);
+        }
+
+        return value($default, $condition);
     }
 }
