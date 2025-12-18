@@ -10,19 +10,24 @@ use JsonSerializable;
 use Tempest\Support\Arr;
 use Tempest\Support\Arr\ArrayInterface;
 use Traversable;
+use function LaravelIdea\throw_if;
 
 class Fluent implements ArrayInterface, JsonSerializable
 {
     use IsIterable;
-    protected string $file;
     public function __construct(
-        public array $value = []
+        public array $value = [],
+        protected string $file = '',
     )
-    {}
-
-    public static function make(array $value = []): static
     {
-        return new static($value);
+        if (filled($this->file)) {
+            $this->file = resolve_path($this->file);
+        }
+    }
+
+    public static function make(array $value = [], string $file = ''): static
+    {
+        return new static($value, $file);
     }
 
     public function get(string $key, mixed $default = null): mixed
@@ -142,6 +147,12 @@ class Fluent implements ArrayInterface, JsonSerializable
 
     public function save(bool $pretty = true): static
     {
+        throw_if(
+            blank($this->file),
+            \InvalidArgumentException::class,
+            'File path not set to save the Fluent data.'
+
+        );
 
         \Tempest\Support\Filesystem\write_json(
             $this->file,
