@@ -2,12 +2,30 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Support;
+namespace App\Support;
 
-use App\Services\Support;
+use App\Framework\Support\Arr\ImmutableArray;
+use App\Framework\Support\Arr\MutableArray;
+use App\Support;
+use App\Support\Str\ImmutableString;
 
 class Data
 {
+    public static function str(mixed $value): ImmutableString
+    {
+        return new ImmutableString($value);
+    }
+
+    public static function arr(mixed $value): ImmutableArray
+    {
+        return ImmutableArray::createFrom($value);
+    }
+
+    public static function collect(mixed $value): MutableArray
+    {
+        return MutableArray::createFrom($value);
+    }
+
     public static function path(mixed ...$parts): string
     {
         return Support::path('.', ...$parts);
@@ -35,20 +53,5 @@ class Data
         }
 
         return $default;
-    }
-    public function key(string|int $key, string|int $prefix = '', string|int $suffix = ''): string
-    {
-        $cleanup = fn (string|int $item) => str($item)
-            ->trim()
-            ->trim('.')
-            ->replaceRegex('/\.+/', '.')->trim('.')
-            ->trim();
-        $prefix = $cleanup($prefix)->toString();
-        $suffix = $cleanup($suffix)->toString();
-
-        return $cleanup($key)
-            ->when(filled($prefix), static fn ($str) => $str->start("{$prefix}."))
-            ->when(filled($suffix), static fn ($str) => $str->finish(".{$suffix}"))
-            ->toString();
     }
 }

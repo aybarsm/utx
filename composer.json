@@ -24,7 +24,8 @@
         "symfony/finder": "^8.0",
         "tempest/support": "^2.14",
         "tempest/cryptography": "^2.14",
-        "tempest/database": "^2.14"
+        "tempest/database": "^2.14",
+        "opis/closure": "^4.4"
     },
     "autoload": {
         "psr-4": {

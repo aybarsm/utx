@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Support;
+namespace App\Support;
 
-use App\Services\Support;
 use App\Services\Utx;
+
 class Os
 {
     public static function os(): string

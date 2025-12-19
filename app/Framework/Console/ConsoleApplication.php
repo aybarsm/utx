@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Framework\Console;
 
-use App\Services\Utx;
+use App\Framework\Core\Tempest;
 use Tempest\Console\Actions\ExecuteConsoleCommand;
 use Tempest\Console\ConsoleConfig;
 use Tempest\Console\ExitCodeWasInvalid;
@@ -12,7 +12,6 @@ use Tempest\Console\Input\ConsoleArgumentBag;
 use Tempest\Container\Container;
 use Tempest\Core\Application;
 use Tempest\Core\Kernel;
-use App\Framework\Core\Tempest;
 
 final readonly class ConsoleApplication implements Application
 {

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Services;
 use Tempest\Support\Arr\IsIterable;
 use ArrayIterator;
-use IteratorAggregate;
 use JsonSerializable;
 use Tempest\Support\Arr;
 use Tempest\Support\Arr\ArrayInterface;
@@ -13,21 +12,15 @@ use Traversable;
 
 class Fluent implements ArrayInterface, JsonSerializable
 {
-    private bool $saved = false;
     use IsIterable;
     public function __construct(
         public array $value = [],
-        protected string $file = '',
     )
-    {
-        if ($this->savable()) {
-            $this->file = path($this->file);
-        }
-    }
+    {}
 
-    public static function make(array $value = [], string $file = ''): static
+    public static function make(array $value = []): static
     {
-        return new static($value, $file);
+        return new static($value);
     }
 
     public function get(string $key, mixed $default = null): mixed
@@ -50,7 +43,7 @@ class Fluent implements ArrayInterface, JsonSerializable
 
     public function forget(string|int|array $keys, string|int $prefix = '', string|int $suffix = ''): static
     {
-        $keys = Arr\map_iterable($keys, static fn ($key) => data_key($key, $prefix, $suffix));
+        $keys = Arr\map_iterable($keys, static fn ($key) => data_path((string)$prefix, (string)$key, (string)$suffix));
         Arr\forget_keys($this->value, $keys);
         return $this;
     }
@@ -143,46 +136,4 @@ class Fluent implements ArrayInterface, JsonSerializable
     {
         $this->offsetSet($key, $value);
     }
-    public function __destruct()
-    {
-        if ($this->savable()){
-            $this->save();
-//            register_shutdown_function()
-        }
-    }
-
-    public function savable(): bool
-    {
-        return filled($this->file);
-    }
-
-    public function saved(): bool
-    {
-        return $this->saved;
-    }
-    public function save(bool $pretty = true): static
-    {
-        throw_if(
-            ! $this->savable(),
-            \InvalidArgumentException::class,
-            'File path not set to save the Fluent data.'
-
-        );
-
-        if ($this->saved()){
-            return $this;
-        }
-
-        \Tempest\Support\Filesystem\write_json(
-            $this->file,
-            $this->jsonSerialize(),
-            $pretty
-        );
-
-        $this->saved = true;
-
-        return $this;
-    }
-
-
 }

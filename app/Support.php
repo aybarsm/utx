@@ -2,12 +2,55 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App;
 
-use App\Framework\Support\Str\ImmutableString;
+use App\Services\Utx;
+use App\Support\Str\ImmutableString;
 
 class Support
 {
+//    public static function env(string $key, mixed $default = null): mixed
+//    {
+//        $ret = \Tempest\env($key, $default);
+//
+//        if (is_string($ret) && filled($ret)) {
+//            $ret = str($ret)->toMutableString()->trim();
+//            $ret = (match(true){
+//                $ret->startsWith('base64:') => $ret->afterFirst('base64:')
+//                default => $ret,
+//            })->toString();
+//        }
+//
+//    }
+
+    public static function defer(\Closure $closure): void
+    {
+        \Tempest\defer($closure);
+    }
+
+    function report(\Throwable $throwable): void
+    {
+        \Tempest\report($throwable);
+    }
+    public static function sentinel(): string
+    {
+        return Utx::sentinel();
+    }
+    public static function with(mixed $value, callable $callback): mixed
+    {
+        return $callback(value($value));
+    }
+
+    public static function tap(mixed $value, callable $callback): mixed
+    {
+        return \Tempest\Support\tap(value($value), $callback);
+    }
+
+    public static function box(\Closure $callback): array
+    {
+        return \Tempest\Support\box($callback);
+    }
+
     public static function path(string $separator, string $delimiter = '#', array $parts = []): string
     {
         $pattern = str($separator)

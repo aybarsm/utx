@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Framework\Support\Str;
+namespace App\Support\Str;
 
 use App\Traits\IsPipable;
 use Stringable;
@@ -13,6 +13,7 @@ use Tempest\Support\Str\StringInterface;
 final class MutableString implements StringInterface
 {
     use ManipulatesString;
+    use ValidatesString;
     use HasConditions;
     use IsPipable;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Support\Os;
+namespace App\Support\Os;
 
-use App\Services\Support;
+use App\Support;
 
 class Acl
 {

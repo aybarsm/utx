@@ -2,14 +2,19 @@
 
 declare(strict_types=1);
 
-use App\Services\Support;
-use App\Framework\Support\Arr\ImmutableArray;
-use App\Framework\Support\Str\ImmutableString;
+use App\Support;
 
 if (!function_exists('path')) {
     function path(...$parts): string
     {
         return Support\Fs::path(...$parts);
+    }
+}
+
+if (!function_exists('data_path')) {
+    function data_path(...$parts): string
+    {
+        return Support\Data::path(...$parts);
     }
 }
 
@@ -28,16 +33,23 @@ if (! function_exists('filled')) {
 }
 
 if (! function_exists('str')) {
-    function str(mixed $value): ImmutableString
+    function str(mixed $value): Support\Str\ImmutableString
     {
-        return new ImmutableString($value);
+        return Support\Data::str($value);
     }
 }
 
 if (! function_exists('arr')) {
-    function arr(mixed $value): ImmutableArray
+    function arr(mixed $value): \App\Framework\Support\Arr\ImmutableArray
     {
-        return ImmutableArray::createFrom($value);
+        return Support\Data::arr($value);
+    }
+}
+
+if (! function_exists('collect')) {
+    function collect(mixed $value): \App\Framework\Support\Arr\MutableArray
+    {
+        return Support\Data::collect($value);
     }
 }
 
@@ -72,27 +84,41 @@ if (! function_exists('throw_if')) {
 if (! function_exists('with')) {
     function with(mixed $value, callable $callback): mixed
     {
-        return $callback(value($value));
+        return Support::with($value, $callback);
     }
 }
 
 if (! function_exists('tap')) {
     function tap(mixed $value, callable $callback): mixed
     {
-        return \Tempest\Support\tap(value($value), $callback);
+        return Support::tap($value, $callback);
     }
 }
 
 if (! function_exists('box')) {
     function box(\Closure $callback): array
     {
-        return \Tempest\Support\box($callback);
+        return Support::box($callback);
     }
 }
 
-if (! function_exists('terminating')) {
-    function terminating(callable $callback): void
+if (!function_exists('sentinel')) {
+    function sentinel(): string
     {
-
+        return Support::sentinel();
     }
 }
+
+if (!function_exists('is_sentinel')) {
+    function is_sentinel(mixed $value): bool
+    {
+        return Support\Is::sentinel(value($value));
+    }
+}
+
+//if (! function_exists('terminating')) {
+//    function terminating(callable $callback): void
+//    {
+//
+//    }
+//}

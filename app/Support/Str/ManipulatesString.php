@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Framework\Support\Str;
+namespace App\Support\Str;
 use Tempest\Support\Str\ManipulatesString as BaseManipulatesString;
+
 trait ManipulatesString
 {
     use BaseManipulatesString;
-
     public function chopStart(string | array $needle): self
     {
         foreach (\Tempest\Support\Arr\wrap($needle) as $n) {

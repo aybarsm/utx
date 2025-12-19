@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Services\Support\Os;
-
-use App\Services\Support;
+namespace App\Support\Os;
 
 class Is
 {
