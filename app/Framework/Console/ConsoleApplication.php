@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Framework\Console;
 
+use App\Services\Utx;
 use Tempest\Console\Actions\ExecuteConsoleCommand;
 use Tempest\Console\ConsoleConfig;
 use Tempest\Console\ExitCodeWasInvalid;
@@ -11,7 +12,7 @@ use Tempest\Console\Input\ConsoleArgumentBag;
 use Tempest\Container\Container;
 use Tempest\Core\Application;
 use Tempest\Core\Kernel;
-use Tempest\Core\Tempest;
+use App\Framework\Core\Tempest;
 
 final readonly class ConsoleApplication implements Application
 {
@@ -24,22 +25,17 @@ final readonly class ConsoleApplication implements Application
     public static function boot(
         array $discoveryLocations = [],
     ): self {
-        $name = 'utx';
-        $root = path_rwd();
-        $internalStorage = implode(DIRECTORY_SEPARATOR, [$root, '.utx']);
-
-        $container = Tempest::boot(
-            root: $root,
+        return with(Tempest::boot(
+            root: UTX_ROOT,
             discoveryLocations: $discoveryLocations,
-            internalStorage: $internalStorage
-        );
+            internalStorage: UTX_ROOT . DIRECTORY_SEPARATOR . '.internal',
+        ), static function (Container $container) {
+            $application = $container->get(ConsoleApplication::class);
+            $consoleConfig = $container->get(ConsoleConfig::class);
+            $consoleConfig->name = 'utx';
 
-        $application = $container->get(ConsoleApplication::class);
-
-        $consoleConfig = $container->get(ConsoleConfig::class);
-        $consoleConfig->name = $name;
-
-        return $application;
+            return $application;
+        });
     }
 
     public function run(): void
@@ -54,4 +50,5 @@ final readonly class ConsoleApplication implements Application
 
         $this->container->get(Kernel::class)->shutdown($exitCode);
     }
+
 }

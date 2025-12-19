@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Services\Support;
 
-use App\Services\Support;
+use App\Services\Utx;
 
-class Is
+final class Is
 {
     public static function sentinel(mixed $value): bool
     {
-        return $value === Support::sentinel();
+        return $value === Utx::sentinel();
     }
 
     public static function blank(mixed $value): bool
     {
-        if (static::sentinel($value)) {
+        if (self::sentinel($value)) {
             return true;
         }
 
@@ -44,7 +44,7 @@ class Is
 
     public static function filled(mixed $value): bool
     {
-        return ! static::blank($value);
+        return ! self::blank($value);
     }
     public static function any_all(bool $all, mixed $value, bool $strict, mixed ...$of): bool
     {
@@ -61,12 +61,12 @@ class Is
 
     public static function any(mixed $value, bool $strict, mixed ...$of): bool
     {
-        return static::any_all(false, $value, $strict, ...$of);
+        return self::any_all(false, $value, $strict, ...$of);
     }
 
     public static function all(mixed $value, bool $strict, mixed ...$of): bool
     {
-        return static::any_all(true, $value, $strict, ...$of);
+        return self::any_all(true, $value, $strict, ...$of);
     }
 
     public static function phar(): bool

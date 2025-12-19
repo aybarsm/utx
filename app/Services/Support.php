@@ -5,12 +5,9 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Framework\Support\Str\ImmutableString;
-use App\Traits\HasContainer;
 
 class Support
 {
-    use HasContainer;
-
     public static function path(string $separator, string $delimiter = '#', array $parts = []): string
     {
         $pattern = str($separator)
@@ -31,18 +28,6 @@ class Support
             ->filter(static fn ($part) => filled($part))
             ->implode($separator)
             ->toString();
-    }
-
-    public static function sentinel(): string
-    {
-        if (! defined('UTX_SENTINEL')){
-            $parts = [
-                (string)hrtime(true),
-                uniqid(\Tempest\Support\Random\secure_string(64), true),
-            ];
-            define('UTX_SENTINEL', password_hash(implode('|', $parts), PASSWORD_DEFAULT));
-        }
-        return UTX_SENTINEL;
     }
 
     public static function when(mixed $condition, mixed $value, mixed $default = null): mixed

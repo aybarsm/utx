@@ -13,14 +13,6 @@ if (!function_exists('path')) {
     }
 }
 
-if (!function_exists('path_app')) {
-    function path_app(...$parts): string
-    {
-        $pathApp = Support::get('fs.path.app', static fn () => dirname(__FILE__));
-        return path($pathApp, ...$parts);
-    }
-}
-
 if (! function_exists('blank')) {
     function blank(mixed $value): bool
     {

@@ -6,12 +6,12 @@ namespace App\Services\Support;
 
 use App\Services\Support;
 
-class Fs
+final class Fs
 {
     public static function path(mixed ...$parts): string
     {
         if (blank($parts)) {
-            return Support\Os\Path::root();
+            return UTX_ROOT;
         }
 
         $first = str($parts[0])->toMutableString()->trim();
@@ -27,9 +27,9 @@ class Fs
                     'cwd' => getcwd(),
                     'home' => $_SERVER['HOME'],
                     'tmp' => sys_get_temp_dir(),
-                    'app' => path_app(),
-                    'root' => Support::get('fs.path.root', static fn () => dirname(path_app())),
-                    'rwd' => static::pathRwd(),
+                    'app_root' => UTX_APP_ROOT,
+                    'app' => UTX_APP_ROOT . DIRECTORY_SEPARATOR . 'app',
+                    'root' => UTX_ROOT,
                     default => null,
                 };
                 return [null, $base->toString(), $replace];
@@ -54,21 +54,5 @@ class Fs
         }
 
         return $ret;
-    }
-    public static function pathRoot(): string
-    {
-        return Support::get('fs.path.root', static function() {
-
-        });
-    }
-
-    public static function pathRwd(): string
-    {
-        return match(true){
-            Support\Os::env('UTX_ROOT') !== false => (string)first(Support\Os::env('UTX_ROOT')),
-            Support\Os\Is::fam('bsd', 'solaris', 'linux') && Support\Os\Acl::uid() === 0 => '/etc/utx',
-            ($_SERVER['HOME'] ?? null) !== null => $_SERVER['HOME'] . DIRECTORY_SEPARATOR . '.utx',
-            default => path(':root')
-        };
     }
 }

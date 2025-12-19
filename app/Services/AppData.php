@@ -8,7 +8,6 @@ use Tempest\Container\Singleton;
 #[Singleton(tag: 'app-data')]
 final class AppData extends Fluent
 {
-
     public function __construct(array $value = [], string $file = '')
     {
         [$value, $file] = static::resolveArguments();

@@ -1,15 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-use Tempest\Console\ConsoleApplication;
+use App\Framework\Console\ConsoleApplication;
 
-require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
+define('UTX_APP_ROOT', dirname(__FILE__));
 
-\App\Services\Support::sentinel();
+require_once implode(DIRECTORY_SEPARATOR, [UTX_APP_ROOT, 'vendor', 'autoload.php']);
 
-ConsoleApplication::boot(
-        name: 'utx',
-        root: __DIR__,
-)->run();
+\App\Services\Utx::boot();
+
+ConsoleApplication::boot()->run();
 
 exit;
