@@ -27,8 +27,8 @@ class Fs
                     'cwd' => getcwd(),
                     'home' => $_SERVER['HOME'],
                     'tmp' => sys_get_temp_dir(),
-                    'app' => dirname(__FILE__),
-                    'root' => dirname(__FILE__, 2),
+                    'app' => path_app(),
+                    'root' => Support::get('fs.path.root', static fn () => dirname(path_app())),
                     'rwd' => static::pathRwd(),
                     default => null,
                 };
@@ -47,13 +47,19 @@ class Fs
         }
 
         $parts[0] = $first->toString();
-        $ret = Support::path(DIRECTORY_SEPARATOR, '#', ...$parts);
+        $ret = Support::path(DIRECTORY_SEPARATOR, '#', $parts);
 
         if (! Support\Os\Is::fam('windows')){
             $ret = str($ret)->start(DIRECTORY_SEPARATOR)->toString();
         }
 
         return $ret;
+    }
+    public static function pathRoot(): string
+    {
+        return Support::get('fs.path.root', static function() {
+
+        });
     }
 
     public static function pathRwd(): string

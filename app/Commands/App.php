@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Commands;
 
+use App\Services\Support;
 use Tempest\Console\Console;
 use Tempest\Console\ConsoleCommand;
-use Tempest\Process\ProcessExecutor;
 use Tempest\Container\Container;
-use App\Services\Support;
+use Tempest\Process\ProcessExecutor;
+
 final class App
 {
     public function __construct(

@@ -39,7 +39,7 @@ Thumbs.db
 
 # Dev
 dev/
-app/Test.php
+app/Commands/Test.php
 *.bak*
 *.bak*/
 *.dev*

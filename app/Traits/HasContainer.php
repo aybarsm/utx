@@ -10,7 +10,7 @@ trait HasContainer
 
     public static function get(string $key, mixed $default): mixed
     {
-        if (!isset(static::$__container[$key])) {
+        if (!static::has($key)) {
             static::$__container[$key] = value($default);
         }
 
@@ -19,8 +19,12 @@ trait HasContainer
 
     public static function has(string $key): bool
     {
-        if (blank($key)){
-            return true;
-        }
+        throw_if(
+            blank($key),
+            \InvalidArgumentException::class,
+            'Container key cannot be blank.'
+        );
+
+        return array_key_exists($key, static::$__container);
     }
 }

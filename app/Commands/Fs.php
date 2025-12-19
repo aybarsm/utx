@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Commands;
 
 use Tempest\Console\Console;
 use Tempest\Console\ConsoleCommand;
