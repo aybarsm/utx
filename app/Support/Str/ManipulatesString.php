@@ -9,10 +9,26 @@ trait ManipulatesString
 {
     use BaseManipulatesString;
 
-    public function trimDeep(string $characters = " \n\r\t\v\0"): self
+    public function linesReplace(string $with): self
     {
-        return $this->trim($characters)->replaceRegex('/^\s+|\s+$/u', '');
+        return $this->replaceRegex("/((\r?\n)|(\r\n?))/", $with);
     }
+
+    public function linesNormalise(): self
+    {
+        return $this->linesReplace("\n");
+    }
+
+    public function linesRemoveEmpty(): self
+    {
+        return $this->replaceRegex('/^\s*[\r\n]+|[\r\n]+\s*\z/', '')->replaceRegex('/(\n\s*){2,}/', "\n");
+    }
+
+    public function linesSplit(int $limit = -1, int $flags = 0): \App\Support\Arr\MutableArray
+    {
+        return $this->split("/((\r?\n)|(\r\n?))/", $limit, $flags);
+    }
+
     public function chopStart(string | array $needle): self
     {
         foreach (\Tempest\Support\Arr\wrap($needle) as $n) {

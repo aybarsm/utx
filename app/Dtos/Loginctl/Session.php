@@ -16,6 +16,7 @@ final readonly class Session
         public bool $idle,
         public ?string $tty = null,
         public ?string $since = null,
+        public ?object $details = null,
     ){
     }
 }

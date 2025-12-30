@@ -16,11 +16,17 @@ final class Loginctl
     ){
     }
 
-    public function sessions()
+    public function sessions(): \App\Support\Arr\ImmutableArray
     {
-        $output = trim($this->exec->run('sudo loginctl list-sessions --json=short')->output);
-        return map(json_decode($output, true))
+        $sessions = $this->exec->run('sudo loginctl list-sessions --json=short');
+        $sessions = json_decode(trim($sessions->output), true);
+        foreach ($sessions as $key => $session) {
+            $sessions[$key]['details'] = str($this->exec->run("sudo loginctl show-session {$session['session']}")->output)
+                ->toKeyValueMap();
+        }
+
+        return arr(map($sessions)
             ->collection()
-            ->to(Session::class);
+            ->to(Session::class));
     }
 }

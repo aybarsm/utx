@@ -11,6 +11,11 @@ trait ValidatesString
     use HasValidator;
     public function isJson(?int $depth = null, ?int $flags = null): bool
     {
-        return new Rules\IsJsonString($depth, $flags)->isValid($this->value);
+        return new Rules\IsJsonString($depth, $flags)->isValid(trim($this->value));
+    }
+
+    public function isInt(bool $orNull = false): bool
+    {
+        return new Rules\IsInteger($orNull)->isValid(trim($this->value));
     }
 }

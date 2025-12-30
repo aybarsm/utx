@@ -13,6 +13,7 @@ use Tempest\Support\Str\StringInterface;
 final class ImmutableString implements StringInterface
 {
     use ManipulatesString;
+    use TransformStrings;
     use ValidatesString;
     use HasConditions;
     use IsPipable;

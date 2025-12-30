@@ -116,6 +116,20 @@ if (!function_exists('is_sentinel')) {
     }
 }
 
+if (!function_exists('truthy')) {
+    function truthy(mixed $value): bool
+    {
+        return in_array($value, [true, 'true', 1, '1', 'on', 'yes', 'enabled'], strict: true);
+    }
+}
+
+if (!function_exists('falsy')) {
+    function falsy(mixed $value): bool
+    {
+        return in_array($value, [false, 'false', 0, '0', 'off', 'no', 'disabled'], strict: true);
+    }
+}
+
 //if (! function_exists('terminating')) {
 //    function terminating(callable $callback): void
 //    {
