@@ -22,9 +22,11 @@ final class Loginctl
     {
 //        /** @var \App\Services\Loginctl $sessions */
 //        $loginctl = get(tag: 'loginctl');
-        $sessions = map($this->exec->run('loginctl list-sessions --json=short')->output)
-            ->collection()
-            ->to(Session::class);
-        dump($sessions);
+        $out = $this->exec->run('sudo loginctl list-sessions --json=short')->output;
+        dump($out);
+//        $sessions = map($this->exec->run('loginctl list-sessions --json=short')->output)
+//            ->collection()
+//            ->to(Session::class);
+//        dump($sessions);
     }
 }

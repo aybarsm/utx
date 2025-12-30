@@ -18,7 +18,7 @@ final class Loginctl
 
     public function sessions()
     {
-        return map($this->exec->run('loginctl list-sessions --json=short')->output)
+        return map(trim($this->exec->run('loginctl list-sessions --json=short')->output))
             ->collection()
             ->to(Session::class);
     }
