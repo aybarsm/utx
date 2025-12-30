@@ -11,16 +11,18 @@ use function Tempest\get;
 
 final class Wpctl
 {
-    #[Inject]
     private ProcessExecutor $exec;
+    private Loginctl $loginCtl;
 
     public readonly array $env;
     public function __construct(
         public readonly string $id = '@DEFAULT_AUDIO_SINK@',
     ){
-        /** @var Loginctl $loginctl */
-        $loginctl = get(Loginctl::class);
-        $session = $loginctl->activeSession('wayland');
+        $this->exec = get(ProcessExecutor::class);
+        $this->loginCtl = get(Loginctl::class);
+
+        $session = $this->loginCtl->activeSession('wayland');
+
         $this->env = [
             'XDG_RUNTIME_DIR' => "/run/user/{$session->uid}"
         ];
