@@ -130,6 +130,33 @@ if (!function_exists('falsy')) {
     }
 }
 
+if (!function_exists('pending_process')) {
+    function pending_process(
+        array|string $command = [],
+        ?\Tempest\DateTime\Duration $timeout = null,
+        ?\Tempest\DateTime\Duration $idleTimeout = null,
+        ?string $path = null,
+        ?string $input = null,
+        bool $quietly = false,
+        bool $tty = false,
+        array $environment = [],
+        array $options = [],
+    ): \Tempest\Process\PendingProcess
+    {
+        return new \Tempest\Process\PendingProcess(
+            command: $command,
+            timeout: $timeout,
+            idleTimeout: $idleTimeout,
+            path: $path,
+            input: $input,
+            quietly: $quietly,
+            tty: $tty,
+            environment: $environment,
+            options: $options
+        );
+    }
+}
+
 //if (! function_exists('terminating')) {
 //    function terminating(callable $callback): void
 //    {
