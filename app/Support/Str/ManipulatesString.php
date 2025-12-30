@@ -8,6 +8,11 @@ use Tempest\Support\Str\ManipulatesString as BaseManipulatesString;
 trait ManipulatesString
 {
     use BaseManipulatesString;
+
+    public function trimDeep(string $characters = " \n\r\t\v\0"): self
+    {
+        return $this->trim($characters)->replaceRegex('/^\s+|\s+$/u', '');
+    }
     public function chopStart(string | array $needle): self
     {
         foreach (\Tempest\Support\Arr\wrap($needle) as $n) {

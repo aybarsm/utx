@@ -8,7 +8,7 @@ use App\Dtos\Loginctl\Session;
 use Tempest\Container\Singleton;
 use Tempest\Process\ProcessExecutor;
 use function Tempest\map;
-#[Singleton(tag: 'loginctl')]
+#[Singleton]
 final class Loginctl
 {
     public function __construct(
@@ -18,7 +18,8 @@ final class Loginctl
 
     public function sessions()
     {
-        return map(trim($this->exec->run('loginctl list-sessions --json=short')->output))
+        $output = trim($this->exec->run('sudo loginctl list-sessions --json=short')->output);
+        return map(json_decode($output, true))
             ->collection()
             ->to(Session::class);
     }
