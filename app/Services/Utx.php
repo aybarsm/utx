@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Support\Fluent;
 use Tempest\Cache\Cache;
 use Tempest\Container\Singleton;
 

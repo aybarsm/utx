@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Framework\Support\Arr;
+namespace App\Support\Arr;
 
 use App\Traits\IsPipable;
 use Tempest\Support\Arr\ArrayInterface;

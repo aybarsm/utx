@@ -40,14 +40,14 @@ if (! function_exists('str')) {
 }
 
 if (! function_exists('arr')) {
-    function arr(mixed $value): \App\Framework\Support\Arr\ImmutableArray
+    function arr(mixed $value): Support\Arr\ImmutableArray
     {
         return Support\Data::arr($value);
     }
 }
 
 if (! function_exists('collect')) {
-    function collect(mixed $value): \App\Framework\Support\Arr\MutableArray
+    function collect(mixed $value): Support\Arr\MutableArray
     {
         return Support\Data::collect($value);
     }

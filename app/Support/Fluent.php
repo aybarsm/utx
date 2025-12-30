@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Services;
-use Tempest\Support\Arr\IsIterable;
+namespace App\Support;
 use ArrayIterator;
 use JsonSerializable;
 use Tempest\Support\Arr;
 use Tempest\Support\Arr\ArrayInterface;
+use Tempest\Support\Arr\IsIterable;
 use Traversable;
 
 class Fluent implements ArrayInterface, JsonSerializable

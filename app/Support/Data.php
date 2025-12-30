@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Support;
 
-use App\Framework\Support\Arr\ImmutableArray;
-use App\Framework\Support\Arr\MutableArray;
 use App\Support;
+use App\Support\Arr\ImmutableArray;
+use App\Support\Arr\MutableArray;
 use App\Support\Str\ImmutableString;
 
 class Data
