@@ -7,18 +7,20 @@ namespace App\Services;
 use Tempest\Process\ProcessExecutor;
 use Tempest\Container\Inject;
 use App\Support\Str\ImmutableString;
+use function Tempest\get;
+
 final class Wpctl
 {
     #[Inject]
     private ProcessExecutor $exec;
-    #[Inject]
-    private Loginctl $loginctl;
 
     public readonly array $env;
     public function __construct(
         public readonly string $id = '@DEFAULT_AUDIO_SINK@',
     ){
-        $session = $this->loginctl->activeSession('wayland');
+        /** @var Loginctl $loginctl */
+        $loginctl = get(Loginctl::class);
+        $session = $loginctl->activeSession('wayland');
         $this->env = [
             'XDG_RUNTIME_DIR' => "/run/user/{$session->uid}"
         ];
