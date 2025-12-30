@@ -29,4 +29,12 @@ final class Loginctl
             ->collection()
             ->to(Session::class));
     }
+
+    public function activeSession(string $type = ''): ?Session
+    {
+        return $this->sessions()
+            ->first(
+                static fn (Session $session) => $session->details->Active === true && (blank($type) || $session->details->Type === $type)
+            );
+    }
 }

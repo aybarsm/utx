@@ -21,11 +21,13 @@ final class Loginctl
     #[ConsoleCommand(name: 'loginctl:sessions')]
     public function sessions(): void
     {
+        $wayland = $this->loginCtl->activeSession('wayland');
+        dump($wayland);
 //        $out = '[{"session":"2","uid":1001,"user":"aybarsm","seat":"seat0","leader":1209,"class":"user","tty":null,"idle":false,"since":null},{"session":"3","uid":1001,"user":"aybarsm","seat":null,"leader":1493,"class":"manager","tty":null,"idle":false,"since":null},{"session":"56","uid":1001,"user":"aybarsm","seat":null,"leader":5533,"class":"user","tty":null,"idle":false,"since":null}]';
 //        dump(str($out)->isJson());
-        $sessions = $this->loginCtl->sessions();
+//        $sessions = $this->loginCtl->sessions();
 
-        dump($sessions);
+//        dump($sessions);
 //        $cmd = $this->exec->run('/Users/aybarsm/PersonalSync/Coding/php/tempest/utx/dev/json.sh');
 
 //        $sessions = map(json_decode(trim($cmd->output), true))
