@@ -73,6 +73,7 @@ final class WpCtl
             'Level' => $volume->level,
             'Pct' => $volume->percent,
             'To' => $value,
+            'Cmd' => "wpctl set-volume {$this->id} {$value}",
         ]);
 
         $process = pending_process(
