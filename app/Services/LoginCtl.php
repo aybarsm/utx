@@ -9,7 +9,7 @@ use Tempest\Container\Singleton;
 use Tempest\Process\ProcessExecutor;
 use function Tempest\map;
 #[Singleton]
-final class Loginctl
+final class LoginCtl
 {
     public function __construct(
         private ProcessExecutor $exec,

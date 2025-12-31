@@ -11,14 +11,14 @@ use function Tempest\get;
 final class WpCtl
 {
     use HasProcessExecutor;
-    private Loginctl $loginCtl;
+    private LoginCtl $loginCtl;
 
     public readonly array $env;
     public function __construct(
         public readonly string $id = '@DEFAULT_AUDIO_SINK@',
     ){
         $this->exec = get(ProcessExecutor::class);
-        $this->loginCtl = get(Loginctl::class);
+        $this->loginCtl = get(LoginCtl::class);
 
         $session = $this->loginCtl->activeSession('wayland');
 
