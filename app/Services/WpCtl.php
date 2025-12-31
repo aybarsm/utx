@@ -68,6 +68,12 @@ final class WpCtl
         }
 
         $value = round($value, 2, PHP_ROUND_HALF_DOWN);
+        $volume = $this->volume();
+        dump([
+            'Level' => $volume->level,
+            'Pct' => $volume->percent,
+            'To' => $value,
+        ]);
 
         $process = pending_process(
             command: "wpctl set-volume {$this->id} {$value}",

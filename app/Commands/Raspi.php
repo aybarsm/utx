@@ -20,7 +20,7 @@ final class Raspi
     {
         $volume = $this->getWpCtl()->volume();
         $muted = $volume->muted ? 'Yes' : 'No';
-        $this->console->writeln("[Volume] Level: {$volume->level} | Muted: {$muted}");
+        $this->console->writeln("[Volume] Level: {$volume->level} ({$volume->percent}%) | Muted: {$muted}");
     }
 
     #[ConsoleCommand(name: 'raspi:volume-increase')]
