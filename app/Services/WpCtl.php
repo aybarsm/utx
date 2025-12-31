@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Traits\HasProcessExecutor;
 use Tempest\Process\ProcessExecutor;
 use function Tempest\get;
 
-final class Wpctl
+final class WpCtl
 {
-    private ProcessExecutor $exec;
+    use HasProcessExecutor;
     private Loginctl $loginCtl;
-
 
     public readonly array $env;
     public function __construct(
@@ -34,11 +34,8 @@ final class Wpctl
             'muted' => null,
         ];
 
-        str(
-            $this->exec->run(
-                pending_process(command: "wpctl get-volume {$this->id}", environment: $this->env)
-            )->output
-        )
+        $this->processRun(pending_process(command: "wpctl get-volume {$this->id}", environment: $this->env))
+        ->outStr
         ->trim()
         ->whitespaceSplit(-1, PREG_SPLIT_NO_EMPTY)
         ->each(static function(string $segment) use (&$ret) {
@@ -74,7 +71,6 @@ final class Wpctl
 
         return $this->exec->run($process)->successful();
     }
-
 
     public function increaseVolume(int $step = 1): bool
     {
