@@ -18,4 +18,9 @@ trait ValidatesString
     {
         return new Rules\IsInteger($orNull)->isValid(trim($this->value));
     }
+
+    public function isFloat(bool $orNull = false): bool
+    {
+        return new Rules\IsFloat($orNull)->isValid(trim($this->value));
+    }
 }

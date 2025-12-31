@@ -17,7 +17,8 @@ final class Raspi
     #[ConsoleCommand(name: 'raspi:volume')]
     public function volume(): void
     {
-        $wpctl = new Wpctl();
-        $this->console->info("Volume: {$wpctl->getVolume()}");
+        $volume = new Wpctl()->volume();
+        $muted = $volume->muted ? 'Yes' : 'No';
+        $this->console->info("[Volume] Level: {$volume->level} | Muted: {$muted}");
     }
 }

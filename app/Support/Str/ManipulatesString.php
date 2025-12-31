@@ -29,6 +29,11 @@ trait ManipulatesString
         return $this->split("/((\r?\n)|(\r\n?))/", $limit, $flags);
     }
 
+    public function whitespaceSplit(int $limit = -1, int $flags = 0): \App\Support\Arr\MutableArray
+    {
+        return $this->split('#\s#', $limit, $flags);
+    }
+
     public function chopStart(string | array $needle): self
     {
         foreach (\Tempest\Support\Arr\wrap($needle) as $n) {
