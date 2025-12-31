@@ -2,12 +2,11 @@
 
 namespace App\Commands;
 
-use App\Services\Loginctl;
 use App\Services\WpCtl;
 use Tempest\Console\Console;
 use Tempest\Console\ConsoleCommand;
 
-final class Raspi
+final class Rpi
 {
     protected WpCtl $wpCtl;
     public function __construct(
@@ -15,15 +14,15 @@ final class Raspi
     ) {
     }
 
-    #[ConsoleCommand(name: 'raspi:volume')]
+    #[ConsoleCommand(name: 'rpi:volume', description: 'Volume Info', aliases: ['rpi:vol'])]
     public function volume(): void
     {
         $volume = $this->getWpCtl()->volume();
         $muted = $volume->muted ? 'Yes' : 'No';
-        $this->console->writeln("[Volume] Level: {$volume->level} ({$volume->percent}%) | Muted: {$muted}");
+        $this->console->writeln("[Volume] Level: {$volume->level}% | Muted: {$muted}");
     }
 
-    #[ConsoleCommand(name: 'raspi:volume-up')]
+    #[ConsoleCommand(name: 'rpi:volume-up', description: 'Increase Volume', aliases: ['rpi:vol-up'])]
     public function volumeUp(int $step = 1): void
     {
         if (! $this->getWpCtl()->volumeUp($step)) {
@@ -32,7 +31,7 @@ final class Raspi
         $this->volume();
     }
 
-    #[ConsoleCommand(name: 'raspi:volume-down')]
+    #[ConsoleCommand(name: 'rpi:volume-down',  description: 'Decrease Volume', aliases: ['rpi:vol-down'])]
     public function volumeDown(int $step = 1): void
     {
         if (! $this->getWpCtl()->volumeDown($step)) {

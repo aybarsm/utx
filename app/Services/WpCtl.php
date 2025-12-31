@@ -32,7 +32,6 @@ final class WpCtl
         $ret = [
             'level' => null,
             'muted' => null,
-            'percent' => null,
         ];
 
         $this->processRun(pending_process(command: "wpctl get-volume {$this->id}", environment: $this->env))
@@ -41,15 +40,11 @@ final class WpCtl
         ->whitespaceSplit(-1, PREG_SPLIT_NO_EMPTY)
         ->each(static function(string $segment) use (&$ret) {
             if (!isset($ret['level']) && floatval($segment) == $segment){
-                $ret['level'] = round(floatval($segment), 2, PHP_ROUND_HALF_UP);
+                $ret['level'] = intval(round(floatval($segment), 0, PHP_ROUND_HALF_UP));
             }elseif(!isset($ret['muted']) && $segment === '[MUTED]'){
                 $ret['muted'] = true;
             }
         });
-
-        if (isset($ret['level'])) {
-            $ret['percent'] = intval(max(intval($ret['level'] * 100), 100));
-        }
 
         if (!isset($ret['muted'])) {
             $ret['muted'] = false;
@@ -67,17 +62,15 @@ final class WpCtl
             $value = 100;
         }
 
-        $value = round(($value / 100), 2, PHP_ROUND_HALF_DOWN);
         $volume = $this->volume();
         dump([
             'Level' => $volume->level,
-            'Pct' => $volume->percent,
             'To' => $value,
-            'Cmd' => "wpctl set-volume {$this->id} {$value}",
+            'Cmd' => "wpctl set-volume {$this->id} {$value}%",
         ]);
 
         $process = pending_process(
-            command: "wpctl set-volume {$this->id} {$value}",
+            command: "wpctl set-volume {$this->id} {$value}%",
             environment: $this->env,
         );
 
