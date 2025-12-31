@@ -32,6 +32,7 @@ final class WpCtl
         $ret = [
             'level' => null,
             'muted' => null,
+            'percent' => null,
         ];
 
         $this->processRun(pending_process(command: "wpctl get-volume {$this->id}", environment: $this->env))
@@ -45,6 +46,10 @@ final class WpCtl
                 $ret['muted'] = true;
             }
         });
+
+        if (isset($ret['level'])) {
+            $ret['percent'] = intval(max(intval($ret['level'] * 100), 100));
+        }
 
         if (!isset($ret['muted'])) {
             $ret['muted'] = false;
@@ -74,12 +79,12 @@ final class WpCtl
 
     public function increaseVolume(int $step = 1): bool
     {
-        return $this->setVolume($this->volume()->level + $step);
+        return $this->setVolume(intval($this->volume()->percent + $step));
     }
 
     public function decreaseVolume(int $step = 1): bool
     {
-        return $this->setVolume($this->volume()->level - $step);
+        return $this->setVolume(intval($this->volume()->percent - $step));
     }
 
     public function mute(?bool $muted = null): ?bool
