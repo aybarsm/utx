@@ -40,7 +40,7 @@ final class WpCtl
         ->whitespaceSplit(-1, PREG_SPLIT_NO_EMPTY)
         ->each(static function(string $segment) use (&$ret) {
             if (!isset($ret['level']) && floatval($segment) == $segment){
-                $ret['level'] = intval(round(floatval($segment), 0, PHP_ROUND_HALF_UP));
+                $ret['level'] = intval(round(floatval($segment) * 100, 0, PHP_ROUND_HALF_UP));
             }elseif(!isset($ret['muted']) && $segment === '[MUTED]'){
                 $ret['muted'] = true;
             }
