@@ -23,19 +23,19 @@ final class Raspi
         $this->console->writeln("[Volume] Level: {$volume->level} ({$volume->percent}%) | Muted: {$muted}");
     }
 
-    #[ConsoleCommand(name: 'raspi:volume-increase')]
-    public function volumeIncrease(int $step = 1): void
+    #[ConsoleCommand(name: 'raspi:volume-up')]
+    public function volumeUp(int $step = 1): void
     {
-        if (! $this->getWpCtl()->increaseVolume($step)) {
+        if (! $this->getWpCtl()->volumeUp($step)) {
             $this->console->error($this->getWpCtl()->processResultLast()->err);
         }
         $this->volume();
     }
 
-    #[ConsoleCommand(name: 'raspi:volume-decrease')]
-    public function volumeDecrease(int $step = 1): void
+    #[ConsoleCommand(name: 'raspi:volume-down')]
+    public function volumeDown(int $step = 1): void
     {
-        if (! $this->getWpCtl()->decreaseVolume($step)) {
+        if (! $this->getWpCtl()->volumeDown($step)) {
             $this->console->error($this->getWpCtl()->processResultLast()->err);
         }
         $this->volume();

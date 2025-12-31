@@ -83,12 +83,12 @@ final class WpCtl
         return $this->exec->run($process)->successful();
     }
 
-    public function increaseVolume(int $step = 1): bool
+    public function volumeUp(int $step = 1): bool
     {
         return $this->setVolume(intval($this->volume()->percent + $step));
     }
 
-    public function decreaseVolume(int $step = 1): bool
+    public function volumeDown(int $step = 1): bool
     {
         return $this->setVolume(intval($this->volume()->percent - $step));
     }
