@@ -67,7 +67,7 @@ final class WpCtl
             $value = 100;
         }
 
-        $value = round($value, 2, PHP_ROUND_HALF_DOWN);
+        $value = round(($value / 100), 2, PHP_ROUND_HALF_DOWN);
         $volume = $this->volume();
         dump([
             'Level' => $volume->level,
