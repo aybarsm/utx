@@ -4,13 +4,18 @@ source ./definitions
 
 SH_ACTION=${1:-}
 if [ "$SH_ACTION" == "doctor" ]; then
+  if [ $EUID != 0 ]; then
+      echo "Please run doctor mode as root or with sudo."
+      exit 1
+  fi
+
   if command -v php 2>&1 >/dev/null; then
     echo "Everything seems OK"
     exit 0
   fi
 
   echo "php command not found. Checking required commands to install."
-  COMMANDS_REQUIRED=( "curl" "jq" )
+  COMMANDS_REQUIRED=( "curl" "jq" "tar" )
   COMMANDS_MISSING=( )
   for COMMAND in "${COMMANDS_REQUIRED[@]}"; do
     if ! command -v "${COMMAND}" 2>&1 >/dev/null; then
@@ -20,8 +25,27 @@ if [ "$SH_ACTION" == "doctor" ]; then
 
   if (( ${#COMMANDS_MISSING[@]} > 0 )); then
     echo "Commands [${COMMANDS_MISSING[@]}] required to install static php binary."
+    echo "Please install the required packages for commands and re-try."
     exit 1
   fi
+
+  echo "Downloading and installing static PHP binary... Please wait."
+  curl -1sSLf "${URL_PHP_BIN}" | tar -xz -C /tmp
+  mv /tmp/php "${PATH_DIR_BIN}/php"
+  chown root:root "${PATH_DIR_BIN}/php"
+  chmod +x "${PATH_DIR_BIN}/php"
+  if command -v setcap 2>&1 >/dev/null; then
+    setcap "cap_net_bind_service=+ep" "${PATH_DIR_BIN}/php"
+  fi
+  echo "Static PHP binary installed to: ${PATH_DIR_BIN}/php"
+
+  if ! command -v composer 2>&1 >/dev/null; then
+    echo "Composer not found. Installing composer... Please wait."
+    curl -1sLf https://getcomposer.org/installer | "${PATH_DIR_BIN}/php" -- --install-dir="$" --filename="composer"
+    chown root:root "${PATH_DIR_BIN}/composer"
+    chmod +x "${PATH_DIR_BIN}/composer"
+  fi
+
 
 #
 #

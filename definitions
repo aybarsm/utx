@@ -2,31 +2,6 @@
 
 set -euo pipefail
 
-PATH_DIR_APP="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
-PATH_FILE_BIN_APP="${PATH_DIR_APP}/utx"
-
-PATH_DIR_BIN=/usr/local/bin
-PATH_FILE_BIN_PHP="${PATH_DIR_BIN}/bin"
-PATH_FILE_BIN_COMPOSER="${PATH_DIR_BIN}/bin"
-
-OS_TYPE="$(uname -s)"
-OS_TYPE=${OS_TYPE,,}
-
-if [ "${OS_TYPE}" == "darwin" ]; then
-    OS_TYPE="macos"
-fi
-
-OS_ARCH="$(uname -m)"
-OS_ARCH=${OS_ARCH,,}
-
-if [ "${OS_ARCH}" == "arm64" ]; then
-    OS_ARCH="aarch64"
-elif [ "${OS_ARCH}" == "amd64" ]; then
-    OS_ARCH="x86_64"
-fi
-
-URL_PHP_BIN="https://dl.static-php.dev/static-php-cli/bulk/php-8.4.17-cli-${OS_TYPE}-${OS_ARCH}.tar.gz"
-
 confirm() {
     local message="$1"
     local response
@@ -59,3 +34,56 @@ confirm() {
         esac
     done
 }
+
+path_uname() {
+    stat -c '%U' "${1}"
+}
+
+path_gname() {
+    stat -c '%G' "${1}"
+}
+
+path_chmod() {
+    stat --format '%a' "${1}"
+}
+
+cmd_exec() {
+    (( $# < 1 )) && return 1
+
+    local -a parts=( )
+    local exec_command
+    if [[ "${APP_PATH_UNAME}" != "root" ]] || [[ "${APP_PATH_GNAME}" != "root" ]]; then
+        parts+=( "sudo" )
+        [[ "${APP_PATH_UNAME}" != "root" ]] && parts+=( "-u" "${APP_PATH_UNAME}" )
+        [[ "${APP_PATH_GNAME}" != "root" ]] && parts+=( "-g" "${APP_PATH_GNAME}" )
+    fi
+
+    exec_command="${parts[*]} $*"
+    ${exec_command}
+}
+
+PATH_FILE_SELF="$(realpath "${BASH_SOURCE[0]}")"
+PATH_DIR_APP="$(dirname "${PATH_FILE_SELF}")"
+PATH_FILE_BIN_APP="${PATH_DIR_APP}/utx"
+PATH_DIR_BIN=/usr/local/bin
+
+OS_TYPE="$(uname -s)"
+OS_TYPE=${OS_TYPE,,}
+
+if [ "${OS_TYPE}" == "darwin" ]; then
+    OS_TYPE="macos"
+fi
+
+OS_ARCH="$(uname -m)"
+OS_ARCH=${OS_ARCH,,}
+
+if [ "${OS_ARCH}" == "arm64" ]; then
+    OS_ARCH="aarch64"
+elif [ "${OS_ARCH}" == "amd64" ]; then
+    OS_ARCH="x86_64"
+fi
+
+URL_PHP_BIN="https://dl.static-php.dev/static-php-cli/bulk/php-8.4.17-cli-${OS_TYPE}-${OS_ARCH}.tar.gz"
+
+APP_PATH_UNAME=$(path_uname "${PATH_FILE_BIN_APP}")
+APP_PATH_GNAME=$(path_gname "${PATH_FILE_BIN_APP}")
