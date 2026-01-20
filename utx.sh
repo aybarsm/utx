@@ -2,8 +2,7 @@
 
 source ./definitions
 
-SH_ACTION=${1:-}
-if [ "$SH_ACTION" == "doctor" ]; then
+if [ "${1:-}" == "doctor" ]; then
   if [ $EUID != 0 ]; then
       echo "Please run doctor mode as root or with sudo."
       exit 1
@@ -29,6 +28,15 @@ if [ "$SH_ACTION" == "doctor" ]; then
   if ! command -v composer 2>&1 >/dev/null; then
     echo "Composer not found."
     install_composer
+  fi
+
+  if [ ! -d "${PATH_DIR_APP}/vendor" ]; then
+    echo "vendor directory not found."
+    echo "Please provide arguments for composer install command:"
+    read -r composer_args
+    echo "Installing components... Please wait."
+    cmd_exec "COMPOSER_ALLOW_SUPERUSER=1 composer --working-dir=${PATH_DIR_APP} install ${composer_args}"
+    echo "Components installed."
   fi
 
   echo "Everything seems OK"
