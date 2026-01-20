@@ -53,6 +53,17 @@ if [ "${1:-}" == "doctor" ]; then
 
   echo "Everything seems OK"
   exit 0
+elif [ "${1:-}" == "app:update" ]; then
+  if [ $EUID != 0 ]; then
+      echo "Please run doctor mode as root or with sudo."
+      exit 1
+  fi
+  git -C "${PATH_DIR_APP}" reset --hard --quiet
+  git -C "${PATH_DIR_APP}" pull
+  echo "Please provide arguments for composer install command:"
+  read -r composer_args
+  COMPOSER_ALLOW_SUPERUSER=1 cmd_exec "composer --working-dir=${PATH_DIR_APP} install ${composer_args}"
+  echo "App updated."
 else
   exec "${PATH_FILE_BIN_APP}" "${@:1}"
 fi
