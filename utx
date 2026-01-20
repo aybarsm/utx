@@ -5,6 +5,9 @@ require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
 
 \App\Services\Utx::boot();
 
-\Tempest\Console\ConsoleApplication::boot(name: 'utx')->run();
+\Tempest\Console\ConsoleApplication::boot(
+        name: 'utx',
+        root: __DIR__,
+)->run();
 
 exit;
