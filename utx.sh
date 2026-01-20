@@ -45,6 +45,12 @@ if [ "${1:-}" == "doctor" ]; then
     echo "Components installed."
   fi
 
+  if [ ! -f "${PATH_DIR_BIN}/utx" ]; then
+    echo "UTX binary not found."
+    ln -s "${PATH_DIR_APP}/utx.sh" "${PATH_DIR_BIN}/utx"
+    echo "UTX binary linked."
+  fi
+
   echo "Everything seems OK"
   exit 0
 else
