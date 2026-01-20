@@ -41,7 +41,7 @@ if [ "$SH_ACTION" == "doctor" ]; then
 
   if ! command -v composer 2>&1 >/dev/null; then
     echo "Composer not found. Installing composer... Please wait."
-    curl -1sLf https://getcomposer.org/installer | "${PATH_DIR_BIN}/php" -- --install-dir="$" --filename="composer"
+    curl -1sLf https://getcomposer.org/installer | "${PATH_DIR_BIN}/php" -- --install-dir="${PATH_DIR_BIN}" --filename="composer"
     chown root:root "${PATH_DIR_BIN}/composer"
     chmod +x "${PATH_DIR_BIN}/composer"
   fi
