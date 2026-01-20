@@ -87,3 +87,23 @@ URL_PHP_BIN="https://dl.static-php.dev/static-php-cli/bulk/php-8.4.17-cli-${OS_T
 
 APP_PATH_UNAME=$(path_uname "${PATH_FILE_BIN_APP}")
 APP_PATH_GNAME=$(path_gname "${PATH_FILE_BIN_APP}")
+
+install_php(){
+    echo "Downloading and installing static PHP binary... Please wait."
+    curl -1sSLf "${URL_PHP_BIN}" | tar -xz -C /tmp
+    mv /tmp/php "${PATH_DIR_BIN}/php"
+    chown root:root "${PATH_DIR_BIN}/php"
+    chmod +x "${PATH_DIR_BIN}/php"
+    if command -v setcap 2>&1 >/dev/null; then
+      setcap "cap_net_bind_service=+ep" "${PATH_DIR_BIN}/php"
+    fi
+    echo "Static PHP binary installed to: ${PATH_DIR_BIN}/php"
+}
+
+install_composer(){
+    echo "Installing composer... Please wait."
+    curl -1sLf https://getcomposer.org/installer | "${PATH_DIR_BIN}/php" -- --install-dir="${PATH_DIR_BIN}" --filename="composer"
+    chown root:root "${PATH_DIR_BIN}/composer"
+    chmod +x "${PATH_DIR_BIN}/composer"
+    echo "Composer installed to: ${PATH_DIR_BIN}/composer"
+}
