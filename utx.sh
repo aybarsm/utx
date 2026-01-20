@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/definitions"
+source ./definitions
 
 if [ "${1:-}" == "doctor" ]; then
   if [ $EUID != 0 ]; then
@@ -42,6 +42,6 @@ if [ "${1:-}" == "doctor" ]; then
   echo "Everything seems OK"
   exit 0
 else
-  exec "${PATH_FILE_BIN_APP} ${@:1}"
+  exec "${PATH_FILE_BIN_APP}" "${@:1}"
 fi
 
