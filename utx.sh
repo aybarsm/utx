@@ -36,10 +36,17 @@ if [ "${1:-}" == "doctor" ]; then
     echo "Example env file copied"
   fi
 
+  if [ ! -d "${PATH_DIR_APP}/.tempest" ]; then
+    mkdir -p "${PATH_DIR_APP}/.tempest"
+  fi
+
   if [ ! -d "${PATH_DIR_APP}/vendor" ]; then
     echo "vendor directory not found."
     echo "Please provide arguments for composer install command:"
     read -r composer_args
+    if [[ -n "${composer_args}" ]] && [[ ! -f "${PATH_DIR_APP}/.tempest/composer_install_args" ]]; then
+        echo "${composer_args}" | tee "${PATH_DIR_APP}/.tempest/composer_install_args" > /dev/null
+    fi
     echo "Installing components... Please wait."
     COMPOSER_ALLOW_SUPERUSER=1 cmd_exec "composer --working-dir=${PATH_DIR_APP} install ${composer_args}"
     echo "Components installed."
@@ -60,8 +67,15 @@ elif [ "${1:-}" == "app:update" ]; then
   fi
   git -C "${PATH_DIR_APP}" reset --hard --quiet
   git -C "${PATH_DIR_APP}" pull
-  echo "Please provide arguments for composer install command:"
-  read -r composer_args
+  if [ ! -f "${PATH_DIR_APP}/.tempest/composer_install_args" ]; then
+    composer_args=$(cat "${PATH_DIR_APP}/.tempest/composer_install_args")
+  else
+    echo "Please provide arguments for composer install command:"
+    read -r composer_args
+  fi
+  if [[ -n "${composer_args}" ]] && [[ ! -f "${PATH_DIR_APP}/.tempest/composer_install_args" ]]; then
+      echo "${composer_args}" | tee "${PATH_DIR_APP}/.tempest/composer_install_args" > /dev/null
+  fi
   COMPOSER_ALLOW_SUPERUSER=1 cmd_exec "composer --working-dir=${PATH_DIR_APP} install ${composer_args}"
   echo "App updated."
 else
