@@ -67,7 +67,7 @@ elif [ "${1:-}" == "app:update" ]; then
   fi
   git -C "${PATH_DIR_APP}" reset --hard --quiet
   git -C "${PATH_DIR_APP}" pull
-  if [ ! -f "${PATH_DIR_APP}/.tempest/composer_install_args" ]; then
+  if [ -f "${PATH_DIR_APP}/.tempest/composer_install_args" ]; then
     composer_args=$(cat "${PATH_DIR_APP}/.tempest/composer_install_args")
   else
     echo "Please provide arguments for composer install command:"
