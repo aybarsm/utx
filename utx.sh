@@ -30,6 +30,12 @@ if [ "${1:-}" == "doctor" ]; then
     install_composer
   fi
 
+  if [ ! -d "${PATH_DIR_APP}/.env" ]; then
+    echo "Env file not found."
+    cp "${PATH_DIR_APP}/.env.example" "${PATH_DIR_APP}/.env"
+    echo "Example env file copied"
+  fi
+
   if [ ! -d "${PATH_DIR_APP}/vendor" ]; then
     echo "vendor directory not found."
     echo "Please provide arguments for composer install command:"
