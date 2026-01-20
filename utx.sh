@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./definitions
+source "$(dirname "$(realpath "${BASH_SOURCE[0]}")")/definitions"
 
 if [ "${1:-}" == "doctor" ]; then
   if [ $EUID != 0 ]; then
