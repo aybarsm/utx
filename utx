@@ -3,8 +3,10 @@
 
 require_once implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
 
-\App\Services\Utx::boot();
+echo implode(DIRECTORY_SEPARATOR, [__DIR__, 'vendor', 'autoload.php']);
 
-\Tempest\Console\ConsoleApplication::boot(name: 'utx')->run();
+//\App\Services\Utx::boot();
 
-exit;
+//\Tempest\Console\ConsoleApplication::boot(name: 'utx')->run();
+
+//exit;
