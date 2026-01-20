@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+PATH_DIR_APP="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+PATH_FILE_BIN_APP="${PATH_DIR_APP}/utx"
+
+PATH_DIR_BIN=/usr/local/bin
+PATH_FILE_BIN_PHP="${PATH_DIR_BIN}/bin"
+PATH_FILE_BIN_COMPOSER="${PATH_DIR_BIN}/bin"
+
+OS_TYPE="$(uname -s)"
+OS_TYPE=${OS_TYPE,,}
+
+if [ "${OS_TYPE}" == "darwin" ]; then
+    OS_TYPE="macos"
+fi
+
+OS_ARCH="$(uname -m)"
+OS_ARCH=${OS_ARCH,,}
+
+if [ "${OS_ARCH}" == "arm64" ]; then
+    OS_ARCH="aarch64"
+elif [ "${OS_ARCH}" == "amd64" ]; then
+    OS_ARCH="x86_64"
+fi
+
+URL_PHP_BIN="https://dl.static-php.dev/static-php-cli/bulk/php-8.4.17-cli-${OS_TYPE}-${OS_ARCH}.tar.gz"
+
+confirm() {
+    local message="$1"
+    local response
+    local attempts=0
+    local max_attempts=5
+
+    if ! [ -t 0 ]; then
+        echo "Non-interactive shell detected — assuming 'no'."
+        return 1
+    fi
+
+    while true; do
+        read -rp "$message [y/n]: " response
+
+        case "$response" in
+            [Yy]|[Yy][Ee][Ss])
+                return 0
+                ;;
+            [Nn]|[Nn][Oo]|"")
+                return 1
+                ;;
+            *)
+                ((attempts++))
+                if (( attempts >= max_attempts )); then
+                    echo "Too many invalid attempts. Aborting."
+                    return 1
+                fi
+                echo "Please answer yes or no (y/n)."
+                ;;
+        esac
+    done
+}

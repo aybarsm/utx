@@ -36,7 +36,7 @@ Homestead.yaml
 Thumbs.db
 
 /.vagrant
-
+/bin
 # Dev
 dev/
 app/Commands/Test.php
