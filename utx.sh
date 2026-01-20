@@ -35,7 +35,7 @@ if [ "${1:-}" == "doctor" ]; then
     echo "Please provide arguments for composer install command:"
     read -r composer_args
     echo "Installing components... Please wait."
-    cmd_exec "COMPOSER_ALLOW_SUPERUSER=1 && composer --working-dir=${PATH_DIR_APP} install ${composer_args}"
+    COMPOSER_ALLOW_SUPERUSER=1 cmd_exec "composer --working-dir=${PATH_DIR_APP} install ${composer_args}"
     echo "Components installed."
   fi
 
